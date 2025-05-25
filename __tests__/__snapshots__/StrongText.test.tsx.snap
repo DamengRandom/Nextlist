@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StrongText matches snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="chakra-text css-6u8cgc"
+  >
+    Test Text
+  </span>
+</DocumentFragment>
+`;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component matches snapshot with username 1`] = `
+<DocumentFragment>
+  <nav
+    class="css-6qkd65"
+  >
+    <div
+      class="css-0"
+    >
+      <h2
+        class="chakra-heading css-5yayc3"
+      >
+        Next List
+      </h2>
+    </div>
+    <div
+      class="css-17xejub"
+    />
+    <div
+      class="css-0"
+    >
+      <button
+        aria-pressed="true"
+        class="chakra-button css-14j3nze"
+        type="button"
+      >
+        Hello testuser
+      </button>
+    </div>
+  </nav>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`Navbar component matches snapshot without username 1`] = `
+<DocumentFragment>
+  <nav
+    class="css-6qkd65"
+  >
+    <div
+      class="css-0"
+    >
+      <h2
+        class="chakra-heading css-5yayc3"
+      >
+        Next List
+      </h2>
+    </div>
+    <div
+      class="css-17xejub"
+    />
+    <div
+      class="css-0"
+    >
+      <button
+        aria-pressed="false"
+        class="chakra-button css-14j3nze"
+        type="button"
+      >
+        Sign In
+      </button>
+    </div>
+  </nav>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreTags matches snapshot with empty genres 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-1dth9i4"
+    data-testid="genre-tags-container"
+  />
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`GenreTags matches snapshot with multiple genres 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-1dth9i4"
+    data-testid="genre-tags-container"
+  >
+    <div
+      class="css-ffmuqs"
+      data-testid="genre-tag"
+    >
+      Action
+    </div>
+    <div
+      class="css-1loqlts"
+      data-testid="genre-tag"
+    >
+      Comedy
+    </div>
+    <div
+      class="css-xzkf3k"
+      data-testid="genre-tag"
+    >
+      Drama
+    </div>
+    <div
+      class="css-1sl5dkm"
+      data-testid="genre-tag"
+    >
+      Sci-Fi
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
+
+exports[`GenreTags matches snapshot with single genre 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-stack css-1dth9i4"
+    data-testid="genre-tags-container"
+  >
+    <div
+      class="css-ffmuqs"
+      data-testid="genre-tag"
+    >
+      Thriller
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</DocumentFragment>
+`;
