@@ -4,13 +4,14 @@ import { ANIME_DETAILS_QUERY } from "../../../../lib/queries/animeInfoDetails";
 import AnimeDetails from "../../../../components/Anime/AnimeDetails";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     type: string;
     id: string;
-  };
+  }>;
 }
 
-export default async function AnimeDetailsPage({ params }: PageProps) {
+export default async function AnimeDetailsPage(props: PageProps) {
+  const params = await props.params;
   const { type, id } = params;
   const idNumber = Number(id);
 

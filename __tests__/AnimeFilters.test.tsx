@@ -3,6 +3,7 @@ import AnimeFilters from "../components/Anime/AnimeFilters";
 
 const mockProps = {
   type: "ANIME",
+  sort: "POPULARITY_DESC",
   searchInput: "Naruto",
   setSearchInput: jest.fn(),
   onSearch: jest.fn(),
@@ -25,13 +26,13 @@ describe("AnimeFilters", () => {
   });
   it("renders heading and search input", () => {
     render(<AnimeFilters {...mockProps} />);
-    expect(screen.getByRole("heading", { name: /anime list/i })).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/search by name/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /anime/i })).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/please enter an anime name/i)).toBeInTheDocument();
   });
 
   it("calls setSearchInput on input change", () => {
     render(<AnimeFilters {...mockProps} />);
-    const input = screen.getByPlaceholderText(/search by name/i);
+    const input = screen.getByPlaceholderText(/please enter an anime name/i);
     fireEvent.change(input, { target: { value: "One Piece" } });
     expect(mockProps.setSearchInput).toHaveBeenCalledWith("One Piece");
   });

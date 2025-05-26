@@ -68,6 +68,13 @@ export default function InformationPage() {
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
   };
+
+  const resetCurrentFilters = () => {
+    dispatch({ type: 'SET_PAGE_INPUT', payload: "1" });
+    dispatch({ type: 'SET_SEARCH_INPUT', payload: "" });
+    setPage(1);
+    setSearchName("");
+  }
   
   if (!type || !sort || !page || !Object.prototype.hasOwnProperty.call(ANIME_TYPES, type) || !Object.prototype.hasOwnProperty.call(SORT_OPTIONS, sort) || isNaN(page) || page < 1) notFound();
 
@@ -89,6 +96,7 @@ export default function InformationPage() {
     <Box p={6} mx="auto">
       <AnimeFilters
         type={type}
+        sort={sort}
         searchInput={searchInput || ""}
         setSearchInput={value => dispatch({ type: 'SET_SEARCH_INPUT', payload: value })}
         onSearch={() => {
@@ -103,13 +111,11 @@ export default function InformationPage() {
           }
         }}
         onClear={() => {
-          dispatch({ type: 'SET_PAGE_INPUT', payload: "1" });
-          dispatch({ type: 'SET_SEARCH_INPUT', payload: "" });
-          setPage(1);
-          setSearchName("");
+          resetCurrentFilters();
           reset();
         }}
         onBack={() => {
+          resetCurrentFilters();
           navigateTo('/');
         }}
         pageInput={pageInput}

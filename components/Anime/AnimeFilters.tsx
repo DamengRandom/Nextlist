@@ -1,11 +1,12 @@
 import React from "react";
 import { Flex, Heading, HStack, Input, Button, Text } from "@chakra-ui/react";
 import PositiveIntegerInput from "../Shared/PositiveIntegerInput";
-import { ANIME_TYPES } from "../../constants/shared";
+import { ANIME_TYPES, SORT_OPTIONS } from "../../constants/shared";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 interface AnimeFiltersProps {
   type: string;
+  sort: string;
   searchInput: string;
   setSearchInput: (value: string) => void;
   onSearch: () => void;
@@ -23,6 +24,7 @@ interface AnimeFiltersProps {
 
 const AnimeFilters: React.FC<AnimeFiltersProps> = ({
   type,
+  sort,
   searchInput,
   setSearchInput,
   onSearch,
@@ -48,15 +50,18 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
     boxShadow="sm" 
     py={4}
   >
-    <Heading as="h2" size="md">
-      {ANIME_TYPES[type as keyof typeof ANIME_TYPES]} List
-    </Heading>
+    <Flex justifyContent={"center"} align={"baseline"}>
+      <Heading as="h2" size="md">
+        {ANIME_TYPES[type as keyof typeof ANIME_TYPES]}
+      </Heading>
+      <Text fontSize="xs" fontStyle="italic" pl={2}>{SORT_OPTIONS[sort as keyof typeof SORT_OPTIONS]}</Text>
+    </Flex>
     <HStack role="toolbar" aria-label="Search and pagination controls">
       <Flex role="search" aria-label="Search anime" alignItems="center">
-        <Text id="current-page-label" pr={4}>Search Name:</Text>
+        <Text id="current-page-label" pr={2}>Search Name:</Text>
         <Input
           type="text"
-          placeholder="Search by name"
+          placeholder="Please enter an anime name"
           size="sm"
           width="320px"
           value={searchInput}
@@ -64,11 +69,11 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           aria-label="Search anime by name"
           id="search-anime-input"
         />
-        <Text id="current-page-label" px={4}>Search Page:</Text>
+        <Text id="current-page-label" px={2}>Search Page:</Text>
         <PositiveIntegerInput
           value={pageInput}
           onChange={setPageInput}
-          maxLength={4}
+          maxLength={2}
           placeholder="Eg: 1"
           aria-label="Page number input"
         />
@@ -79,7 +84,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           onClick={() => {
             onSearch();
           }}
-          ml={4}
+          ml={2}
           aria-label="Apply search and page"
         >
           Apply
@@ -93,7 +98,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           onClick={onPrev} 
           isDisabled={page === 1}
           aria-label="Go to previous page"
-          ml={6}
+          ml={3}
         >
           <ArrowLeftIcon aria-hidden="true" />
           <Text pl="2">Prev</Text>
@@ -113,7 +118,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
         <Button 
           size="sm" 
           onClick={onClear}
-          ml={8}
+          ml={4}
           aria-label="Clear search and filters"
         >
           Clear
