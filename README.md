@@ -7,6 +7,7 @@ This is a Anime list functionality based project which is able to show list of a
 First, run the development server, start the local development server by running the following command:
 
 ```bash
+npm install # install the package dependecies
 npm run dev # command to start app locally
 # Then open in browser by URL: http://localhost:3333
 npm run lint # for lint testing & checking

@@ -15,8 +15,7 @@ import ErrorBoundary from "../components/Shared/ErrorBoundary";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { username, jobTitle, setUsername, setJobTitle } = useUserStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [hydrated, setHydrated] = useState(false);
+  const hasHydrated = useUserStore?.persist?.hasHydrated(); // try to check the presist state has been hydrated or not
 
   const handleModalSubmit = (name: string, title: string) => {
     setUsername(name);
@@ -28,14 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const handleClose = () => setIsModalOpen(false);
 
   useEffect(() => {
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
     setIsModalOpen(!(username && jobTitle));
   }, [username, jobTitle]);
-
-  if (!hydrated) return null;
 
   return (
     <html lang="en">
@@ -59,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </ErrorBoundary>
                 </ApolloProvider>
               )} 
-              {hydrated && !username && (
+              {hasHydrated && !username && (
                 <Center minH="calc(100vh - 125px)">
                   <Text>Please sign in to view the animes ~</Text>
                 </Center>

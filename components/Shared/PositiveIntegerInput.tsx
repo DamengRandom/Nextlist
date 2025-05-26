@@ -2,6 +2,7 @@ import { Input, InputProps } from "@chakra-ui/react";
 import { ChangeEvent } from "react";
 
 interface PositiveIntegerInputProps extends Omit<InputProps, 'onChange'> {
+  id: string;
   value: string;
   onChange: (value: string) => void;
   maxLength?: number;
@@ -9,6 +10,7 @@ interface PositiveIntegerInputProps extends Omit<InputProps, 'onChange'> {
 }
 
 const PositiveIntegerInput = ({
+  id,
   value,
   onChange,
   maxLength = 4,
@@ -30,6 +32,7 @@ const PositiveIntegerInput = ({
 
   return (
     <Input
+      id={id}
       type="text"
       inputMode="numeric"
       pattern="[0-9]*"

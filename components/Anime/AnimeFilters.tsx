@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Heading, HStack, Input, Button, Text } from "@chakra-ui/react";
+import { Flex, Heading, HStack, Input, Button, Text, FormLabel } from "@chakra-ui/react";
 import PositiveIntegerInput from "../Shared/PositiveIntegerInput";
 import { ANIME_TYPES, SORT_OPTIONS } from "../../constants/shared";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
@@ -80,7 +80,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
         gap={{ base: 2, md: 0 }}
         width={{ base: "100%", md: "auto" }}
       >
-        <Text id="current-page-label" pr={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Name:</Text>
+        <FormLabel id="current-page-label" pr={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }} htmlFor="search-anime-name-input">Search Name:</FormLabel>
         <Input
           type="text"
           placeholder="Please enter an anime name"
@@ -89,11 +89,12 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           aria-label="Search anime by name"
-          id="search-anime-input"
+          id="search-anime-name-input"
           mb={{ base: 2, md: 0 }}
         />
-        <Text id="current-page-label" px={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Page:</Text>
+        <FormLabel id="current-page-label" px={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }} htmlFor="search-anime-page-input">Search Page:</FormLabel>
         <PositiveIntegerInput
+          id="search-anime-page-input"
           value={pageInput}
           onChange={setPageInput}
           maxLength={2}
@@ -120,7 +121,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
         alignItems={{ base: "stretch", md: "center" }}
         direction={{ base: "column", md: "row" }}
         role="navigation"
-        aria-label="Pagination"
+        aria-label="Pagination actions"
         gap={{ base: 2, md: 0 }}
         width={{ base: "100%", md: "auto" }}
       >

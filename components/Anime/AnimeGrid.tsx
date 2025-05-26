@@ -36,8 +36,9 @@ const AnimeGrid: React.FC<AnimeGridProps> = ({ animeList, handleCardClick }) => 
         >
           {anime?.coverImage?.large && (
             <Image
+              loading="lazy"
               src={anime.coverImage.large}
-              alt={anime?.title?.english || anime?.title?.romaji}
+              alt={`Cover image for ${anime?.title?.english || anime?.title?.romaji}`}
               borderRadius="md"
               mb={0}
               w="100%"
@@ -80,6 +81,7 @@ const AnimeGrid: React.FC<AnimeGridProps> = ({ animeList, handleCardClick }) => 
                 alignSelf="flex-end"
                 onClick={() => handleCardClick(anime)}
                 data-testid={`anime-viewmore-${anime.id}`}
+                aria-label={`View more details about ${anime?.title?.english || anime?.title?.romaji}`}
               >
                 View More
               </Button>

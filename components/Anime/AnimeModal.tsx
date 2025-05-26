@@ -51,12 +51,14 @@ const AnimeModal: FC<AnimeModalNavProps> = ({ isOpen, onClose, anime, onPrev, on
           <Flex direction={{ base: 'column', md: 'row' }} gap={6}>
             <Box flexShrink={0} minW={{ base: '100%', md: '240px' }}>
               <Image
+                loading="lazy"
                 src={anime?.coverImage?.large}
                 alt={anime?.title?.romaji}
                 borderRadius="lg"
                 width="100%"
                 maxW="240px"
                 objectFit="cover"
+                aria-label={`Cover image for ${anime?.title?.english || anime?.title?.romaji}`}
               />
             </Box>
             <Box flex="1">

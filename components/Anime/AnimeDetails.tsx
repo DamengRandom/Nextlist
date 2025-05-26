@@ -19,6 +19,7 @@ export default function AnimeDetails({ anime }: { anime: AnimeProps }) {
           aria-label="Anime banner image"
         >
           <Image
+            loading="lazy"
             src={anime.bannerImage}
             alt={
               anime?.title?.english ||
@@ -42,6 +43,7 @@ export default function AnimeDetails({ anime }: { anime: AnimeProps }) {
           <Flex direction={{ base: 'column', md: 'row' }} gap={6}>
             <Box flexShrink={0} minW={{ base: '100%', md: '240px' }}>
               <Image
+                loading="lazy"
                 src={anime?.coverImage?.extraLarge || anime?.coverImage?.large}
                 alt={
                   anime?.title?.english ||
