@@ -10,7 +10,7 @@ interface PageProps {
   }>;
 }
 
-export default async function AnimeDetailsPage(props: PageProps) {
+export default async function AnimeDetailsPage(props: Awaited<PageProps>) {
   const params = await props.params;
   const { type, id } = params;
   const idNumber = Number(id);
