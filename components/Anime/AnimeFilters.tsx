@@ -44,7 +44,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
     justifyContent={{ base: "center", md: "flex-start", lg: "space-between" }}
     alignItems={{ base: "stretch", md: "stretch", lg: "center" }}
     direction={{ base: "column", md: "column", lg: "row" }}
-    position="sticky"
+    position={{ base: 'static', md: 'sticky' }}
     top={0}
     zIndex={10}
     bg="white"
@@ -54,8 +54,8 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
     gap={{ base: 4, md: 4, lg: 0 }}
   >
     <Flex
-      justifyContent={{ base: "center", md: "flex-start" }}
-      align={{ base: "center", md: "flex-start" }}
+      justifyContent={{ base: "center", md: "flex-end" }}
+      align={{ base: "center", md: "flex-end" }}
       mb={{ base: 2, md: 4, lg: 0 }}
       width={{ base: "100%", md: "100%", lg: "auto" }}
     >
@@ -69,6 +69,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
       aria-label="Search and pagination controls"
       flexWrap="wrap"
       spacing={{ base: 2, md: 4 }}
+      justifyContent={{ base: "center", md: "flex-end" }}
       alignItems={{ base: "stretch", md: "center" }}
       width={{ base: "100%", md: "100%", lg: "auto" }}
     >
@@ -80,7 +81,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
         gap={{ base: 2, md: 0 }}
         width={{ base: "100%", md: "auto" }}
       >
-        <Text id="current-page-label" pr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Name:</Text>
+        <Text id="current-page-label" pr={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Name:</Text>
         <Input
           type="text"
           placeholder="Please enter an anime name"
@@ -92,7 +93,7 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           id="search-anime-input"
           mb={{ base: 2, md: 0 }}
         />
-        <Text id="current-page-label" px={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Page:</Text>
+        <Text id="current-page-label" px={{ base: 0, md: 1 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Page:</Text>
         <PositiveIntegerInput
           value={pageInput}
           onChange={setPageInput}
