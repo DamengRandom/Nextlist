@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Footer from '../components/Shared/Footer'; 
-// import { Box, Text, Flex } from '@chakra-ui/react';
+import Footer from '../components/Shared/Footer';
 
 jest.mock('@chakra-ui/react', () => ({
   ...jest.requireActual('@chakra-ui/react'),

@@ -1,4 +1,3 @@
-// export const ANIME_TYPES = ["ANIME", "MANGA"];
 export const ANIME_TYPES = {
   "ANIME": "Anime",
   "MANGA": "Manga"

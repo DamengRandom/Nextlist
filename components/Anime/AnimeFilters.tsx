@@ -50,7 +50,6 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
     bg="white"
     boxShadow="sm"
     py={4}
-    px={{ base: 2, md: 4 }}
     gap={{ base: 4, md: 4, lg: 0 }}
   >
     <Flex

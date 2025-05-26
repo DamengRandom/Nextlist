@@ -16,9 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const { username, jobTitle, setUsername, setJobTitle } = useUserStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    setIsModalOpen(!(username && jobTitle));
-  }, [username, jobTitle]);
+  const [hydrated, setHydrated] = useState(false);
 
   const handleModalSubmit = (name: string, title: string) => {
     setUsername(name);
@@ -28,6 +26,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const handleEdit = () => setIsModalOpen(true);
   const handleClose = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    setIsModalOpen(!(username && jobTitle));
+  }, [username, jobTitle]);
+
+  if (!hydrated) return null;
 
   return (
     <html lang="en">
@@ -44,17 +52,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Box display="flex" flexDirection="column" minH="100vh">
             <Navbar handleEdit={handleEdit} username={username} />
             <Box flex="1" bg="white">
-              {username && jobTitle ? (
+              {username && jobTitle && (
                 <ApolloProvider client={client}>
                   <ErrorBoundary>
                   {children}
                   </ErrorBoundary>
                 </ApolloProvider>
-              ) : (
-                <Center minH="100vh">
+              )} 
+              {hydrated && !username && (
+                <Center minH="calc(100vh - 125px)">
                   <Text>Please sign in to view the animes ~</Text>
                 </Center>
-            )}
+              )}
             </Box>
             <Footer />
           </Box>

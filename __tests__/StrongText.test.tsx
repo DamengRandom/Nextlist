@@ -38,8 +38,6 @@ describe('StrongText', () => {
     const element = screen.getByTestId(testId);
     expect(element).toBeInTheDocument();
     expect(element).toHaveTextContent(testText);
-    // For Chakra UI specific props, you might need to check the rendered class or style
-    // This depends on how Chakra processes the props
   });
 
   it('matches snapshot', () => {

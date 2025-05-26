@@ -1,5 +1,7 @@
 This is a Anime list functionality based project which is able to show list of animes.
 
+[![Vercel](https://vercel.com/button)](https://vercel.com/DamengRandom/nextlist)
+
 ## Getting Started
 
 First, run the development server, start the local development server by running the following command:
@@ -96,6 +98,7 @@ Decided to use rect testing library + jest to test the major components + utilit
 npm run test
 # or
 npm run test:coverage # checking the unit test with coverage
+npm run test:coverage -- -u # update snapshot tests
 ```
 
 
@@ -106,9 +109,12 @@ Using Vercel to deploy the project
   - Project URL: [Visit Nextlist](https://nextlist-cyan.vercel.app/)
 
 ## Project thoughts
-  - Has learnt quite aa lot from this project, especially in the graphql qeury, nextjs app setup, and charkra css styling and UI components editions
+  - Has learnt quite aa lot from this project, especially in the graphql qeury, nextjs app setup, and charkra css styling and UI components editions (Meanwhile, I might miss some knowledge on NextJS and graphql best practices, please correct me, so I can imporve in future, cheers 🍺)
   - Was thinking to implmenet the mansory grid list layout for shown number of animes, it seems like using purce css might not be a perfect approach, and I don't want to install extra npm package just make this happend, so decied to use a simple grid, and I will keep looking for manosry layout best practices to see if I can make it happen or not
+  - Might need to consider to enhance the data validation part for the user inputs
+  - Also, was thinkinbg to handling the logout functionality, so user could re-enter the new username and job title for new login experience
   - Might need to write more custom hooks functions (Will keep improving too)
+  - Used lighthouse to score which part done well, which part hasn't done well, still working on the improving part of works
   - Was not able to cover every single file for unit tests (time consideration, want to submit on Monday), just keep the test coverage as 80% for now, and will add more after proeject submitted for review
   - Was not able to finsih the accessibility for every single components, but also will keep trying add more after proeject submitted for review
   - It seems like anilist provided total number is not correct, after tried few testings, didn;t make it (Please correct me if I mis-understand any parts, always happy to learn 🤗)

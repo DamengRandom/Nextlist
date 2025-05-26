@@ -9,7 +9,7 @@ exports[`Navbar component matches snapshot with username 1`] = `
       class="css-0"
     >
       <h2
-        class="chakra-heading css-5yayc3"
+        class="chakra-heading css-qfu8ak"
       >
         Nextlist
       </h2>
@@ -45,7 +45,7 @@ exports[`Navbar component matches snapshot without username 1`] = `
       class="css-0"
     >
       <h2
-        class="chakra-heading css-5yayc3"
+        class="chakra-heading css-qfu8ak"
       >
         Nextlist
       </h2>

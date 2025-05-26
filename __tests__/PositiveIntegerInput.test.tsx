@@ -100,7 +100,7 @@ describe('PositiveIntegerInput', () => {
     fireEvent.change(input, { target: { value: '12a' } });
     expect(input).toHaveValue('123');
     
-    fireEvent.change(input, { target: { value: '1234' } }); // Assuming maxLength is 4
+    fireEvent.change(input, { target: { value: '1234' } });
     expect(input).toHaveValue('123');
   });
 });

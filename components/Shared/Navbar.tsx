@@ -1,6 +1,7 @@
 import { Flex, Box, Button, Heading, Spacer } from "@chakra-ui/react";
 import { useAnimeStore } from "../../lib/store/animeStore";
 import { useNavigation } from "../../hooks/useNavigation";
+import { useUserStore } from "../../lib/store/userStore";
 
 type NavbarProps = {
   handleEdit: () => void;
@@ -9,6 +10,7 @@ type NavbarProps = {
 
 export default function Navbar({ handleEdit, username }: NavbarProps) {
   const { reset } = useAnimeStore();
+  const hasHydrated = useUserStore?.persist?.hasHydrated(); // try to check the presist state has been hydrated or not
   const { navigateTo } = useNavigation();
 
   const handleClick = () => {
@@ -19,7 +21,7 @@ export default function Navbar({ handleEdit, username }: NavbarProps) {
   return (
     <Flex as="nav" align="center" justify="space-between" padding={4} bgGradient="linear(to-r, teal.500, blue.500)" color="white" boxShadow="md">
       <Box>
-        <Heading size="lg" textShadow="0 1px 2px rgba(0,0,0,0.5)" cursor="pointer" onClick={handleClick}>Nextlist</Heading>
+        <Heading pl={2} size="lg" textShadow="0 1px 2px rgba(0,0,0,0.5)" cursor="pointer" onClick={handleClick}>Nextlist</Heading>
       </Box>
       <Spacer />
       <Box>
@@ -52,7 +54,7 @@ export default function Navbar({ handleEdit, username }: NavbarProps) {
             transform: "scale(1.02)",
           }}
         >
-          {username ? `Hello ${username}` : "Sign In"}
+          {hasHydrated && !username ? "Sign In" : `Hello ${username}`}
         </Button>
       </Box>
     </Flex>

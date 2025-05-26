@@ -18,7 +18,7 @@ export default function HomePage() {
   }
 
   return (
-    <Center minH="100vh">
+    <Center minH="calc(100vh - 125px)">
       <VStack spacing={8} align="center" px={{ base: 2, md: 2, lg: 0 }}>
         <Heading textAlign="center">
           Welcome to Nextlist
