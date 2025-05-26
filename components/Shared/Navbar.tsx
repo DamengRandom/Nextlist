@@ -19,7 +19,7 @@ export default function Navbar({ handleEdit, username }: NavbarProps) {
   return (
     <Flex as="nav" align="center" justify="space-between" padding={4} bgGradient="linear(to-r, teal.500, blue.500)" color="white" boxShadow="md">
       <Box>
-        <Heading size="lg" textShadow="0 1px 2px rgba(0,0,0,0.5)" cursor="pointer" onClick={handleClick}>Next List</Heading>
+        <Heading size="lg" textShadow="0 1px 2px rgba(0,0,0,0.5)" cursor="pointer" onClick={handleClick}>Nextlist</Heading>
       </Box>
       <Spacer />
       <Box>

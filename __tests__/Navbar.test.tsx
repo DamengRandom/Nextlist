@@ -43,7 +43,7 @@ describe('Navbar component', () => {
   it('renders correctly with username', () => {
     renderNavbar({ username: "testuser" });
     
-    expect(screen.getByText('Next List')).toBeInTheDocument();
+    expect(screen.getByText('Nextlist')).toBeInTheDocument();
     expect(screen.getByText('Hello testuser')).toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'true');
   });
@@ -51,7 +51,7 @@ describe('Navbar component', () => {
   it('renders correctly without username', () => {
     renderNavbar({ username: null });
     
-    expect(screen.getByText('Next List')).toBeInTheDocument();
+    expect(screen.getByText('Nextlist')).toBeInTheDocument();
     expect(screen.getByText('Sign In')).toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'false');
   });
@@ -66,7 +66,7 @@ describe('Navbar component', () => {
   it('navigates to home and resets store when title is clicked', () => {
     renderNavbar({ username: "testuser" });
     
-    fireEvent.click(screen.getByText('Next List'));
+    fireEvent.click(screen.getByText('Nextlist'));
     expect(mockPush).toHaveBeenCalledWith('/');
     expect(mockReset).toHaveBeenCalledTimes(1);
   });

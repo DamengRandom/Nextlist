@@ -25,6 +25,7 @@ const AnimeModal: FC<AnimeModalNavProps> = ({ isOpen, onClose, anime, onPrev, on
             bg="white"
             _hover={{ bg: "gray.100" }}
             zIndex={2}
+            display={{ base: "none", lg: "inline-flex" }}
           />
         )}
         {hasNext && (
@@ -41,6 +42,7 @@ const AnimeModal: FC<AnimeModalNavProps> = ({ isOpen, onClose, anime, onPrev, on
             bg="white"
             _hover={{ bg: "gray.100" }}
             zIndex={2}
+            display={{ base: "none", lg: "inline-flex" }}
           />
         )}
         <ModalHeader id="anime-modal-title">{anime?.title?.english || anime?.title?.romaji}</ModalHeader>
@@ -61,7 +63,7 @@ const AnimeModal: FC<AnimeModalNavProps> = ({ isOpen, onClose, anime, onPrev, on
               <Text fontWeight="bold" fontSize="lg" mb={2}>
                 {anime?.title?.english || anime?.title?.romaji}
               </Text>
-              <Text fontSize="md" color="gray.700" mb={4}>
+              <Text fontSize="md" color="gray.700" mb={4} noOfLines={{ base: 6, md: 6, lg: undefined }}>
                 {anime?.description?.replace(/<[^>]+>/g, '') || 'No description.'}
               </Text>
               <Text fontSize="sm" color="gray.600" mb={1}>

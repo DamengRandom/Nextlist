@@ -33,21 +33,14 @@ describe('AnimeModal', () => {
   it('renders the anime details correctly', () => {
     render(<AnimeModal {...defaultProps} />);
   
-    // Accept multiple matches
     const titleElements = screen.getAllByText(/Attack on Titan/i);
     expect(titleElements.length).toBeGreaterThan(0);
-  
-    // Check image
     expect(screen.getByAltText(/Shingeki no Kyojin/i)).toHaveAttribute('src', mockAnime.coverImage.large);
-  
-    // Description should be plain text after HTML is stripped
     expect(screen.getByText(/A thrilling anime/i)).toBeInTheDocument();
   
-    // Check metadata
     expect(screen.getByText(/Episodes: 25/i)).toBeInTheDocument();
     expect(screen.getByText(/Status: Finished/i)).toBeInTheDocument();
   
-    // Check View Details button
     const detailsLink = screen.getByRole('link', { name: /View Details/i });
     expect(detailsLink).toHaveAttribute('href', '/information/anime/123');
   });

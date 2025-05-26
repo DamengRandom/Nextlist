@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ApolloProvider } from "@apollo/client";
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { Box, Center, ChakraProvider, Text } from "@chakra-ui/react";
 import UserInfoModal from "../components/User/UserInfoModal";
 import client from "../lib/apolloClient";
 import theme from "../theme";
@@ -44,13 +44,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Box display="flex" flexDirection="column" minH="100vh">
             <Navbar handleEdit={handleEdit} username={username} />
             <Box flex="1" bg="white">
-              {username && jobTitle && (
+              {username && jobTitle ? (
                 <ApolloProvider client={client}>
                   <ErrorBoundary>
                   {children}
                   </ErrorBoundary>
                 </ApolloProvider>
-              )}
+              ) : (
+                <Center minH="100vh">
+                  <Text>Please sign in to view the animes ~</Text>
+                </Center>
+            )}
             </Box>
             <Footer />
           </Box>

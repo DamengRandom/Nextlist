@@ -37,45 +37,69 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
   page,
   hasNextPage
 }) => (
-  <Flex 
+  <Flex
     as="section"
     aria-label="Anime filters and pagination"
-    mb={8} 
-    justifyContent="space-between" 
-    alignItems="center" 
-    position="sticky" 
-    top={0} 
-    zIndex={10} 
-    bg="white" 
-    boxShadow="sm" 
+    mb={8}
+    justifyContent={{ base: "center", md: "flex-start", lg: "space-between" }}
+    alignItems={{ base: "stretch", md: "stretch", lg: "center" }}
+    direction={{ base: "column", md: "column", lg: "row" }}
+    position="sticky"
+    top={0}
+    zIndex={10}
+    bg="white"
+    boxShadow="sm"
     py={4}
+    px={{ base: 2, md: 4 }}
+    gap={{ base: 4, md: 4, lg: 0 }}
   >
-    <Flex justifyContent={"center"} align={"baseline"}>
+    <Flex
+      justifyContent={{ base: "center", md: "flex-start" }}
+      align={{ base: "center", md: "flex-start" }}
+      mb={{ base: 2, md: 4, lg: 0 }}
+      width={{ base: "100%", md: "100%", lg: "auto" }}
+    >
       <Heading as="h2" size="md">
         {ANIME_TYPES[type as keyof typeof ANIME_TYPES]}
       </Heading>
       <Text fontSize="xs" fontStyle="italic" pl={2}>{SORT_OPTIONS[sort as keyof typeof SORT_OPTIONS]}</Text>
     </Flex>
-    <HStack role="toolbar" aria-label="Search and pagination controls">
-      <Flex role="search" aria-label="Search anime" alignItems="center">
-        <Text id="current-page-label" pr={2}>Search Name:</Text>
+    <HStack
+      role="toolbar"
+      aria-label="Search and pagination controls"
+      flexWrap="wrap"
+      spacing={{ base: 2, md: 4 }}
+      alignItems={{ base: "stretch", md: "center" }}
+      width={{ base: "100%", md: "100%", lg: "auto" }}
+    >
+      <Flex
+        role="search"
+        aria-label="Search anime"
+        alignItems={{ base: "stretch", md: "center" }}
+        direction={{ base: "column", md: "row" }}
+        gap={{ base: 2, md: 0 }}
+        width={{ base: "100%", md: "auto" }}
+      >
+        <Text id="current-page-label" pr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Name:</Text>
         <Input
           type="text"
           placeholder="Please enter an anime name"
           size="sm"
-          width="320px"
+          width={{ base: "100%", md: "320px" }}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           aria-label="Search anime by name"
           id="search-anime-input"
+          mb={{ base: 2, md: 0 }}
         />
-        <Text id="current-page-label" px={2}>Search Page:</Text>
+        <Text id="current-page-label" px={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} width={{ base: "100%", md: "auto" }}>Search Page:</Text>
         <PositiveIntegerInput
           value={pageInput}
           onChange={setPageInput}
           maxLength={2}
           placeholder="Eg: 1"
           aria-label="Page number input"
+          width={{ base: "100%", md: "80px" }}
         />
         <Button
           variant="gradient"
@@ -84,42 +108,54 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           onClick={() => {
             onSearch();
           }}
-          ml={2}
+          ml={{ base: 0, md: 2 }}
+          mt={{ base: 2, md: 0 }}
           aria-label="Apply search and page"
+          width={{ base: "100%", md: "auto" }}
         >
           Apply
         </Button>
       </Flex>
-      <Flex alignItems="center" role="navigation" aria-label="Pagination">
-        <Button 
-          size="sm" 
-          variant="gradient" 
+      <Flex
+        alignItems={{ base: "stretch", md: "center" }}
+        direction={{ base: "column", md: "row" }}
+        role="navigation"
+        aria-label="Pagination"
+        gap={{ base: 2, md: 0 }}
+        width={{ base: "100%", md: "auto" }}
+      >
+        <Button
+          size="sm"
+          variant="gradient"
           colorScheme="teal"
-          onClick={onPrev} 
+          onClick={onPrev}
           isDisabled={page === 1}
           aria-label="Go to previous page"
-          ml={3}
+          ml={{ base: 0, md: 3 }}
+          width={{ base: "100%", md: "auto" }}
         >
           <ArrowLeftIcon aria-hidden="true" />
           <Text pl="2">Prev</Text>
         </Button>
         <Button
-          ml={4}
-          size="sm" 
-          variant="gradient" 
-          colorScheme="teal" 
-          onClick={onNext} 
+          ml={{ base: 0, md: 4 }}
+          size="sm"
+          variant="gradient"
+          colorScheme="teal"
+          onClick={onNext}
           isDisabled={!hasNextPage}
           aria-label="Go to next page"
+          width={{ base: "100%", md: "auto" }}
         >
           <Text pr="2">Next</Text>
           <ArrowRightIcon aria-hidden="true" />
         </Button>
-        <Button 
-          size="sm" 
+        <Button
+          size="sm"
           onClick={onClear}
-          ml={4}
+          ml={{ base: 0, md: 4 }}
           aria-label="Clear search and filters"
+          width={{ base: "100%", md: "auto" }}
         >
           Clear
         </Button>
@@ -127,8 +163,9 @@ const AnimeFilters: React.FC<AnimeFiltersProps> = ({
           variant={"gradient"}
           size="sm"
           onClick={onBack}
-          ml={4}
+          ml={{ base: 0, md: 4 }}
           aria-label="Back to home"
+          width={{ base: "100%", md: "auto" }}
         >
           Back to home
         </Button>

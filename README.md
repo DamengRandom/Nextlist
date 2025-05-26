@@ -18,7 +18,7 @@ Open [http://localhost:3333](http://localhost:3333) with your browser to see the
 
 ## Learn More
 
-To learn more about next list project, take a look at the following resources:
+To learn more about Nextlist project, take a look at the following resources:
 
 - Technologuy stack
 - Project structure

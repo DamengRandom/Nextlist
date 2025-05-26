@@ -5,7 +5,7 @@ interface PositiveIntegerInputProps extends Omit<InputProps, 'onChange'> {
   value: string;
   onChange: (value: string) => void;
   maxLength?: number;
-  width?: string;
+  width?: string | Record<string, string>;
 }
 
 const PositiveIntegerInput = ({
