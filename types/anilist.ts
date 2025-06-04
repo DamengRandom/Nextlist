@@ -162,3 +162,8 @@ export type ActionProps =
   | { type: 'SET_MODAL_OPEN'; payload: boolean }
   | { type: 'SET_CURRENT_INDEX'; payload: number }
   | { type: 'RESET_INPUTS'; payload: { page: string; search: string } };
+
+export interface AnimeFilterProps {
+  searchInput: string | undefined;
+  pageInput: string;
+}

@@ -1,11 +1,12 @@
+import React from "react";
 import { Flex, Box, Button, Heading, Spacer } from "@chakra-ui/react";
 import { useAnimeStore } from "../../lib/store/animeStore";
 import { useNavigation } from "../../hooks/useNavigation";
 import { useUserStore } from "../../lib/store/userStore";
 
 type NavbarProps = {
-  handleEdit: () => void;
-  username: string | null;
+  handleEdit: () => void,
+  username: string,
 }
 
 export default function Navbar({ handleEdit, username }: NavbarProps) {
@@ -54,7 +55,7 @@ export default function Navbar({ handleEdit, username }: NavbarProps) {
             transform: "scale(1.02)",
           }}
         >
-          {hasHydrated && !username ? "Sign In" : `Hello ${username}`}
+          {hasHydrated ? (username ? `Hello ${username}` : "Sign In") : null}
         </Button>
       </Box>
     </Flex>

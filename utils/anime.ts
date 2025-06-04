@@ -1,4 +1,4 @@
-import { ActionProps, StateProps } from "../types/anilist";
+import { ActionProps, AnimeFilterProps, StateProps } from "../types/anilist";
 
 export function animeReducer(state: StateProps, action: ActionProps) {
   switch (action.type) {
@@ -20,3 +20,24 @@ export function animeReducer(state: StateProps, action: ActionProps) {
       return state;
   }
 }
+
+export const validateForm = (inputs: AnimeFilterProps) => {
+  const newErrors: AnimeFilterProps = {
+    searchInput: '',
+    pageInput: ''
+  };
+  
+  if (!inputs?.searchInput?.trim()) {
+    newErrors.searchInput = 'Anime name is required';
+  } else if (inputs?.searchInput?.length > 200) {
+    newErrors.searchInput = 'Anime name must be no more than 200 characters';
+  }
+  
+  if (!inputs.pageInput.trim()) {
+    newErrors.pageInput = 'Page number is required';
+  } else if (inputs.pageInput.length > 3000) {
+    newErrors.pageInput = 'Please enter a valid page number (less than 3000)';
+  }
+
+  return Object.values(newErrors).every(error => error === '');
+};

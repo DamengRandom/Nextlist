@@ -9,7 +9,7 @@ import { AnimeProps } from "../../types/anilist";
 import { ANIME_TYPES, DEFAULT_RECORDS_SIZE, SORT_OPTIONS } from "../../constants/shared";
 import { GET_PAGINATED_ANIME } from "../../lib/queries/animeInfo";
 import { useAnimeStore } from '../../lib/store/animeStore';
-import { animeReducer } from "../../utils/anime";
+import { animeReducer, validateForm } from "../../utils/anime";
 import AnimeFilters from "../../components/Anime/AnimeFilters";
 import AnimeGrid from "../../components/Anime/AnimeGrid";
 import { useNavigation } from "../../hooks/useNavigation";
@@ -17,7 +17,6 @@ import { useNavigation } from "../../hooks/useNavigation";
 export default function InformationPage() {
   const { navigateTo } = useNavigation();
   const { type, sort, page, searchName, setPage, setSearchName, reset } = useAnimeStore();
-  console.log();
   
   const { data, loading, error } = useQuery(GET_PAGINATED_ANIME, {
     variables: { type, sort: [sort], page, perPage: DEFAULT_RECORDS_SIZE, search: searchName || undefined },
@@ -101,6 +100,8 @@ export default function InformationPage() {
         setSearchInput={value => dispatch({ type: 'SET_SEARCH_INPUT', payload: value })}
         onSearch={() => {
           const currentPageNumber = Number(pageInput) || 1;
+
+          if (!validateForm({ searchInput, pageInput })) return;
           
           setSearchName(searchInput || '');
           setPage(currentPageNumber);

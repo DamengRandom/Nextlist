@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Flex, Image, Text, Heading, Button } from "@chakra-ui/react";
+import DOMPurify from 'dompurify';
 import { AnimeProps } from "../../types/anilist";
 import { GenreTags } from "../Shared/GenreTags";
 import { useNavigation } from "../../hooks/useNavigation";
@@ -85,12 +86,12 @@ export default function AnimeDetails({ anime }: { anime: AnimeProps }) {
               {anime?.characters?.edges && <Text fontSize="sm" color="gray.600" mb={1}>Characters: {anime.characters.edges.map(edge => edge.node.name.full).join(', ')}</Text>}
               {anime?.relations?.edges && <Text fontSize="sm" color="gray.600" mb={1}>Relations: {anime.relations.edges.map(edge => edge.node.title.romaji).join(', ')}</Text>}
               {anime?.tags && <Text fontSize="sm" color="gray.600" mb={1}>Tags: {anime.tags.map(tag => tag.name).join(', ')}</Text>}
-              {anime?.siteUrl && <Text fontSize="sm" color="gray.600" mb={1}>Site URL: <a href={anime.siteUrl} target="_blank" rel="noopener noreferrer" aria-label="AniList site URL">{anime.siteUrl}</a></Text>}
+              {anime?.siteUrl && <Text fontSize="sm" color="gray.600" mb={1}>Site URL: <a href={DOMPurify?.sanitize(anime.siteUrl)} target="_blank" rel="noopener noreferrer" aria-label="AniList site URL">{anime.siteUrl}</a></Text>}
               {anime?.isAdult && <Text fontSize="sm" color="gray.600" mb={1}>Adult: {anime.isAdult ? 'Yes' : 'No'}</Text>}
               {anime?.countryOfOrigin && <Text fontSize="sm" color="gray.600" mb={1}>Country of Origin: {anime.countryOfOrigin}</Text>}
               {anime?.trailer && (
                 <Text fontSize="sm" color="gray.600" mb={1}>
-                  Trailer: <a href={`https://www.youtube.com/watch?v=${anime.trailer.id}`} target="_blank" rel="noopener noreferrer" aria-label="Watch trailer on YouTube">Watch</a>
+                  Trailer: <a href={DOMPurify?.sanitize(`https://www.youtube.com/watch?v=${anime.trailer.id}`)} target="_blank" rel="noopener noreferrer" aria-label="Watch trailer on YouTube">Watch</a>
                 </Text>
               )}
               {anime?.externalLinks && (
@@ -98,7 +99,7 @@ export default function AnimeDetails({ anime }: { anime: AnimeProps }) {
                   <Text mb={1}>External Links:</Text>
                   {anime.externalLinks.map(link => (
                     <Box key={link?.id}>
-                      <a href={link?.url} target="_blank" rel="noopener noreferrer" aria-label={`External link to ${link?.site}`}>{link?.site}</a>
+                      <a href={DOMPurify?.sanitize(link?.url)} target="_blank" rel="noopener noreferrer" aria-label={`External link to ${link?.site}`}>{link?.site}</a>
                     </Box>
                   ))}
                 </Box>
